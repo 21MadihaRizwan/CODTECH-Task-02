@@ -1,0 +1,100 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class AdventureGame {
+private:
+    int score;
+
+public:
+    AdventureGame() : score(0) {}
+
+    void start() {
+        cout << "Welcome to the Adventure Game!" << endl;
+        cout << "You find yourself at a crossroads in a mysterious forest." << endl;
+        cout << "Will you go left or right?" << endl;
+
+        char choice;
+        cin >> choice;
+
+        if (choice == 'L' || choice == 'l') {
+            goLeft();
+        } else if (choice == 'R' || choice == 'r') {
+            goRight();
+        } else {
+            cout << "Invalid choice. Please choose 'L' or 'R'." << endl;
+        }
+    }
+
+    void goLeft() {
+        cout << "You have chosen to go left." << endl;
+        cout << "You encounter a friendly elf who offers you a choice: fight a dragon or help him gather herbs." << endl;
+        cout << "Do you choose to fight (F) or help (H)?" << endl;
+
+        char choice;
+        cin >> choice;
+
+        if (choice == 'F' || choice == 'f') {
+            fightDragon();
+        } else if (choice == 'H' || choice == 'h') {
+            gatherHerbs();
+        } else {
+            cout << "Invalid choice. Please choose 'F' or 'H'." << endl;
+        }
+    }
+
+    void goRight() {
+        cout << "You have chosen to go right." << endl;
+        cout << "You encounter a raging river. Do you swim across (S) or look for a bridge (B)?" << endl;
+
+        char choice;
+        cin >> choice;
+
+        if (choice == 'S' || choice == 's') {
+            swimAcross();
+        } else if (choice == 'B' || choice == 'b') {
+            findBridge();
+        } else {
+            cout << "Invalid choice. Please choose 'S' or 'B'." << endl;
+        }
+    }
+
+    void fightDragon() {
+        cout << "You bravely fight the dragon and defeat it!" << endl;
+        cout << "Congratulations, you earn 100 points for your bravery." << endl;
+        score += 100;
+        endGame();
+    }
+
+    void gatherHerbs() {
+        cout << "You help the elf gather herbs and he rewards you with a magical potion." << endl;
+        cout << "Congratulations, you earn 50 points for your kindness." << endl;
+        score += 50;
+        endGame();
+    }
+
+    void swimAcross() {
+        cout << "You attempt to swim across the river, but the current is too strong and you are swept away." << endl;
+        cout << "Game Over. You earn no points." << endl;
+        endGame();
+    }
+
+    void findBridge() {
+        cout << "You find a sturdy bridge and cross the river safely." << endl;
+        cout << "Congratulations, you earn 30 points for your resourcefulness." << endl;
+        score += 30;
+        endGame();
+    }
+
+    void endGame() {
+        cout << "Your final score is: " << score << endl;
+        cout << "Thank you for playing!" << endl;
+    }
+};
+
+int main() {
+    AdventureGame game;
+    game.start();
+    return 0;
+}
